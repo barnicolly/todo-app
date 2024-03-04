@@ -4,7 +4,7 @@
     "node": ">=18.0.0"
   },
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "nodemon --exec \"vue-cli-service serve\"",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -20,6 +20,7 @@
     "@vue/cli-service": "^5.0.8",
     "eslint": "^8.57.0",
     "eslint-plugin-vue": "^9.22.0",
+    "nodemon": "^3.1.0",
     "vue-template-compiler": "^2.7.16"
   }
 }
