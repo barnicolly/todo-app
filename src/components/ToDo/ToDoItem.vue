@@ -5,7 +5,7 @@
           type="checkbox"
           :id="id"
           :checked="isCompleted"
-          @change="$emit('checkbox-changed')"/>
+          @change="updateDoneStatus(id)"/>
       <label :for="id">{{ title }}</label>
     </div>
     <div>
@@ -19,16 +19,17 @@
       </button>
     </div>
   </div>
-  <edit-form
+  <EditForm
       v-else
       :id="id"
       :title="title"
       @item-edited="itemEdited"
-      @edit-cancelled="editCancelled"></edit-form>
+      @edit-cancelled="editCancelled"></EditForm>
 </template>
 
 <script>
 import EditForm from "./EditForm.vue";
+import {mapMutations} from "vuex";
 
 export default {
   components: {
@@ -50,14 +51,16 @@ export default {
     },
   },
   methods: {
-    deleteToDo() {
-      this.$emit("item-deleted");
-    },
+    ...mapMutations([
+       'deleteToDo',
+       'updateDoneStatus',
+       'editToDo',
+    ]),
     toggleToItemEditForm() {
       this.isEditing = true;
     },
-    itemEdited(newLabel) {
-      this.$emit("item-edited", newLabel);
+    itemEdited(newTitle) {
+      this.editToDo({title: newTitle, toDoId: this.id})
       this.isEditing = false;
     },
     editCancelled() {

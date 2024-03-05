@@ -11,13 +11,18 @@
 </template>
 
 <script>
+import {mapMutations, mapGetters} from "vuex";
+
 export default {
   methods: {
+    ...mapMutations([
+      "addToDo",
+    ]),
     onSubmit() {
       if (this.title === "") {
         return;
       }
-      this.$emit("todo-added", this.title);
+      this.addToDo(this.title);
       this.title = "";
     },
   },
