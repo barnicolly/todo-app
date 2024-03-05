@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "core-js": "^3.36.0",
-    "lodash.uniqueid": "^4.0.1",
+    "uuid": "^9.0.1",
     "vue": "^3.4.21"
   },
   "devDependencies": {
@@ -22,7 +22,6 @@
     "eslint-plugin-vue": "^9.22.0",
     "nodemon": "^3.1.0",
     "sass": "^1.71.1",
-    "sass-loader": "^14.1.1",
-    "vue-template-compiler": "^2.7.16"
+    "sass-loader": "^14.1.1"
   }
 }

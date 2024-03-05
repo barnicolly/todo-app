@@ -4,14 +4,13 @@
       <input
           type="checkbox"
           :id="id"
-          :checked="isDone"
+          :checked="isCompleted"
           @change="$emit('checkbox-changed')"/>
-      <label :for="id">{{ label }}</label>
+      <label :for="id">{{ title }}</label>
     </div>
     <div>
       <button
           type="button"
-          ref="editButton"
           @click="toggleToItemEditForm">
         Редактировать
       </button>
@@ -23,7 +22,7 @@
   <edit-form
       v-else
       :id="id"
-      :label="label"
+      :title="title"
       @item-edited="itemEdited"
       @edit-cancelled="editCancelled"></edit-form>
 </template>
@@ -36,8 +35,8 @@ export default {
     EditForm,
   },
   props: {
-    label: {required: true, type: String},
-    done: {default: false, type: Boolean},
+    title: {required: true, type: String},
+    completed: {default: false, type: Boolean},
     id: {required: true, type: String},
   },
   data() {
@@ -46,8 +45,8 @@ export default {
     };
   },
   computed: {
-    isDone() {
-      return this.done;
+    isCompleted() {
+      return this.completed;
     },
   },
   methods: {

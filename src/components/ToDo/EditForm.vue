@@ -3,10 +3,9 @@
     <div>
       <input
           :id="id"
-          ref="labelInput"
           type="text"
           autocomplete="off"
-          v-model.lazy.trim="newLabel"/>
+          v-model.lazy.trim="newTitle"/>
     </div>
     <div>
       <button type="button" @click="onCancel">
@@ -22,7 +21,7 @@
 <script>
 export default {
   props: {
-    label: {
+    title: {
       type: String,
       required: true,
     },
@@ -33,22 +32,18 @@ export default {
   },
   data() {
     return {
-      newLabel: this.label,
+      newTitle: this.title,
     };
   },
   methods: {
     onSubmit() {
-      if (this.newLabel && this.newLabel !== this.label) {
-        this.$emit("item-edited", this.newLabel);
+      if (this.newTitle && this.newTitle !== this.title) {
+        this.$emit("item-edited", this.newTitle);
       }
     },
     onCancel() {
       this.$emit("edit-cancelled");
     },
-  },
-  mounted() {
-    const labelInputRef = this.$refs.labelInput;
-    labelInputRef.focus();
   },
 };
 </script>

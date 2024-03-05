@@ -2,12 +2,12 @@
   <div id="app">
     <h1>To-Do List</h1>
     <add-form @todo-added="addToDo"></add-form>
-    <h2 id="list-summary" ref="listSummary" tabindex="-1">{{ listSummary }}</h2>
-    <ul aria-labelledby="list-summary">
+    <h2 tabindex="-1">{{ listSummary }}</h2>
+    <ul>
       <li v-for="item in ToDoItems" :key="item.id">
         <to-do-item
-            :label="item.label"
-            :done="item.done"
+            :title="item.title"
+            :completed="item.completed"
             :id="item.id"
             @checkbox-changed="updateDoneStatus(item.id)"
             @item-deleted="deleteToDo(item.id)"
@@ -21,11 +21,7 @@
 <script>
 import ToDoItem from "./components/ToDo/ToDoItem.vue";
 import AddForm from "./components/ToDo/AddForm.vue";
-import uniqueId from "lodash.uniqueid";
-
-function generateUniqueId() {
-  return uniqueId("todo-");
-}
+import { v4 as uuidv4 } from 'uuid';
 
 export default {
   name: "app",
@@ -35,29 +31,30 @@ export default {
   },
   data() {
     return {
-      ToDoItems: [
-        {id: generateUniqueId(), label: "Создать прототип приложения", done: true},
-        {
-          id: generateUniqueId(),
-          label: "Добавить ESLint",
-          done: true,
-        },
-        {id: generateUniqueId(), label: "Обернуть в docker", done: true},
-        {id: generateUniqueId(), label: "Написать тесты", done: false},
-      ],
+      ToDoItems: [],
     };
+  },
+  async mounted() {
+    const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=3');
+    const items = await res.json();
+    this.ToDoItems = items.map((item) => {
+      return {
+        ...item,
+        id: uuidv4(),
+      }
+    });
   },
   methods: {
     addToDo(toDoLabel) {
       this.ToDoItems.push({
-        id: generateUniqueId(),
-        label: toDoLabel,
-        done: false,
+        id: uuidv4(),
+        title: toDoLabel,
+        completed: false,
       });
     },
     updateDoneStatus(toDoId) {
       const toDoToUpdate = this.ToDoItems.find((item) => item.id === toDoId);
-      toDoToUpdate.done = !toDoToUpdate.done;
+      toDoToUpdate.completed = !toDoToUpdate.completed;
     },
     deleteToDo(toDoId) {
       const itemIndex = this.ToDoItems.findIndex((item) => item.id === toDoId);
@@ -65,13 +62,13 @@ export default {
     },
     editToDo(toDoId, newLabel) {
       const toDoToEdit = this.ToDoItems.find((item) => item.id === toDoId);
-      toDoToEdit.label = newLabel;
+      toDoToEdit.title = newLabel;
     },
   },
   computed: {
     listSummary() {
       const numberFinishedItems = this.ToDoItems.filter(
-          (item) => item.done
+          (item) => item.completed
       ).length;
       return `Выполнено задач: ${numberFinishedItems}/${this.ToDoItems.length}`;
     },

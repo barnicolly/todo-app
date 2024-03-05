@@ -5,7 +5,7 @@
       id="new-todo-input"
       name="new-todo"
       autocomplete="off"
-      v-model.lazy.trim="label" />
+      v-model.lazy.trim="title" />
     <button type="submit">Добавить</button>
   </form>
 </template>
@@ -14,16 +14,16 @@
 export default {
   methods: {
     onSubmit() {
-      if (this.label === "") {
+      if (this.title === "") {
         return;
       }
-      this.$emit("todo-added", this.label);
-      this.label = "";
+      this.$emit("todo-added", this.title);
+      this.title = "";
     },
   },
   data() {
     return {
-      label: "",
+      title: "",
     };
   },
 };
