@@ -11,24 +11,24 @@
 </template>
 
 <script>
-import {mapMutations, mapGetters} from "vuex";
+import { mapMutations } from 'vuex';
 
 export default {
   methods: {
     ...mapMutations([
-      "addToDo",
+      'addToDo',
     ]),
     onSubmit() {
-      if (this.title === "") {
+      if (this.title === '') {
         return;
       }
       this.addToDo(this.title);
-      this.title = "";
+      this.title = '';
     },
   },
   data() {
     return {
-      title: "",
+      title: '',
     };
   },
 };

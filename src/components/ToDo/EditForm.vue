@@ -38,11 +38,11 @@ export default {
   methods: {
     onSubmit() {
       if (this.newTitle && this.newTitle !== this.title) {
-        this.$emit("item-edited", this.newTitle);
+        this.$emit('item-edited', this.newTitle);
       }
     },
     onCancel() {
-      this.$emit("edit-cancelled");
+      this.$emit('edit-cancelled');
     },
   },
 };

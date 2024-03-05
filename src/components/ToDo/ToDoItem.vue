@@ -28,17 +28,17 @@
 </template>
 
 <script>
-import EditForm from "./EditForm.vue";
-import {mapMutations} from "vuex";
+import { mapMutations } from 'vuex';
+import EditForm from './EditForm.vue';
 
 export default {
   components: {
     EditForm,
   },
   props: {
-    title: {required: true, type: String},
-    completed: {default: false, type: Boolean},
-    id: {required: true, type: String},
+    title: { required: true, type: String },
+    completed: { default: false, type: Boolean },
+    id: { required: true, type: String },
   },
   data() {
     return {
@@ -52,15 +52,15 @@ export default {
   },
   methods: {
     ...mapMutations([
-       'deleteToDo',
-       'updateDoneStatus',
-       'editToDo',
+      'deleteToDo',
+      'updateDoneStatus',
+      'editToDo',
     ]),
     toggleToItemEditForm() {
       this.isEditing = true;
     },
     itemEdited(newTitle) {
-      this.editToDo({title: newTitle, toDoId: this.id})
+      this.editToDo({ title: newTitle, toDoId: this.id });
       this.isEditing = false;
     },
     editCancelled() {
