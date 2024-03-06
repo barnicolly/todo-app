@@ -3,7 +3,7 @@
 exports[`App.vue Snapshot has same HTML structure 1`] = `
 <div id="app">
   <h1>To-Do List</h1>
-  <form><input type="text" autocomplete="off"><button type="submit">Добавить</button></form>
+  <form><input type="text" autocomplete="off"><button type="button">Добавить</button></form>
   <h2>Выполнено задач: 1/2</h2>
   <ul>
     <li>

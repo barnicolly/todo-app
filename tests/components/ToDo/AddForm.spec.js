@@ -43,7 +43,7 @@ describe('AddForm.vue', () => {
     await input.trigger('change');
     expect(wrapper.vm.title).toBe(changedTitle);
 
-    wrapper.find('button[type="submit"]').trigger('click');
+    wrapper.find('button[type="button"]').trigger('click');
     expect(addToDoMock.mock.calls.length).toBe(1);
     expect(addToDoMock.mock.calls[0][1]).toBe(changedTitle);
     expect(wrapper.vm.title).toBe(defaultTitle);

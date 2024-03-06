@@ -16,9 +16,7 @@ export default {
     },
   },
   getters: {
-    allToDoItems(state) {
-      return state.todoItems;
-    },
+    allToDoItems: (state) => state.todoItems,
     allCompletedToDoItems(state) {
       return state.todoItems
         .filter(

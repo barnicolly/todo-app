@@ -3,6 +3,6 @@
 exports[`EditForm.vue Snapshot has same HTML structure 1`] = `
 <form>
   <div><input id="some-uuid" type="text" autocomplete="off"></div>
-  <div><button type="submit"> Сохранить </button><button type="button"> Отмена </button></div>
+  <div><button type="button"> Сохранить </button><button type="button"> Отмена </button></div>
 </form>
 `;

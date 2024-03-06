@@ -28,7 +28,7 @@ describe('EditForm.vue', () => {
   });
 
   it('click cancel btn', () => {
-    wrapper.find('button[type="button"]').trigger('click');
+    wrapper.find('button:nth-child(2)').trigger('click');
     expect(wrapper.emitted()).toHaveProperty('edit-cancelled');
   });
 
@@ -39,7 +39,7 @@ describe('EditForm.vue', () => {
     await input.trigger('change');
 
     expect(wrapper.vm.newTitle).toBe('new value');
-    wrapper.find('button[type="submit"]').trigger('click');
+    wrapper.find('button:nth-child(1)').trigger('click');
     expect(wrapper.emitted()).toHaveProperty('item-edited');
   });
 });

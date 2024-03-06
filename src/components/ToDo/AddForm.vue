@@ -4,7 +4,7 @@
       type="text"
       autocomplete="off"
       v-model.lazy.trim="title" />
-    <button type="submit" @click="onSubmit">Добавить</button>
+    <button type="button" @click="onSubmit">Добавить</button>
   </form>
 </template>
 
