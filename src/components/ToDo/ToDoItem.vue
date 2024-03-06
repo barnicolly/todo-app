@@ -14,7 +14,7 @@
           @click="toggleToItemEditForm">
         Редактировать
       </button>
-      <button type="button" @click="deleteToDo">
+      <button type="button" @click="deleteToDo(id)">
         Удалить
       </button>
     </div>

@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from 'uuid';
+import axios from 'axios';
 
 export default {
   state: {
@@ -6,11 +7,11 @@ export default {
   },
   actions: {
     async fetchTodoItems({ commit }, limit = 5) {
-      const res = await fetch(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
-      const items = await res.json();
-      commit('updateTodoItems', items.map((item) => ({
+      const items = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+      // const items = res.json();
+      commit('updateTodoItems', items.data.map((item) => ({
         ...item,
-        id: uuidv4(),
+        id: item.id.toString(),
       })));
     },
   },

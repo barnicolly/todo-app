@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EditForm.vue Snapshot has same HTML structure 1`] = `
+<form>
+  <div><input id="some-uuid" type="text" autocomplete="off"></div>
+  <div><button type="submit"> Сохранить </button><button type="button"> Отмена </button></div>
+</form>
+`;

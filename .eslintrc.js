@@ -1,12 +1,15 @@
 module.exports = {
   root: true,
   env: {
-    node: true,
+    browser: true,
+    es6: true,
+    jest: true,
   },
   extends: ['plugin:vue/essential', 'eslint:recommended', 'eslint-config-airbnb-base'],
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
+  plugins: ['jest'],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'error',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'error',
@@ -19,5 +22,6 @@ module.exports = {
         ],
       },
     ],
+    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.spec.js'] }],
   },
 };

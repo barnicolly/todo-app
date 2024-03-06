@@ -8,11 +8,11 @@
           v-model.lazy.trim="newTitle"/>
     </div>
     <div>
+      <button @click="onSubmit" type="submit">
+        Сохранить
+      </button>
       <button type="button" @click="onCancel">
         Отмена
-      </button>
-      <button type="submit">
-        Сохранить
       </button>
     </div>
   </form>

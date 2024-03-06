@@ -8,6 +8,10 @@ services:
         context: ./node
       volumes:
         - ../:/app
+      command:
+        - npm
+        - run
+        - serve
       deploy:
           resources:
               limits:

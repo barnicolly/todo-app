@@ -2,11 +2,9 @@
   <form @submit.prevent="onSubmit">
     <input
       type="text"
-      id="new-todo-input"
-      name="new-todo"
       autocomplete="off"
       v-model.lazy.trim="title" />
-    <button type="submit">Добавить</button>
+    <button type="submit" @click="onSubmit">Добавить</button>
   </form>
 </template>
 
