@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { Store } from 'vuex';
-import AddForm from '../../../src/components/ToDo/AddForm.vue';
+import AddForm from '@/components/ToDo/AddForm.vue';
 
 // todo-misha переделать селекторы как будут классы;
 describe('AddForm.vue', () => {

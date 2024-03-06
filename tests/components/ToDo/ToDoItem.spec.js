@@ -1,7 +1,7 @@
 import { shallowMount, mount } from '@vue/test-utils';
 import { faker } from '@faker-js/faker';
 import { Store } from 'vuex';
-import ToDoItem from '../../../src/components/ToDo/ToDoItem.vue';
+import ToDoItem from '@/components/ToDo/ToDoItem.vue';
 
 // todo-misha переделать селекторы как будут классы;
 describe('ToDoItem.vue', () => {

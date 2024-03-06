@@ -1,6 +1,6 @@
 import { shallowMount } from '@vue/test-utils';
 import { faker } from '@faker-js/faker';
-import EditForm from '../../../src/components/ToDo/EditForm.vue';
+import EditForm from '@/components/ToDo/EditForm.vue';
 
 // todo-misha переделать селекторы как будут классы;
 describe('EditForm.vue', () => {

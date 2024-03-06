@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   publicPath: './',
   lintOnSave: 'warning',
@@ -10,5 +12,12 @@ module.exports = {
       });
       return definitions;
     });
+  },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
   },
 };

@@ -2,7 +2,6 @@
 // See: https://facebook.github.io/jest/docs/en/configuration.html
 
 module.exports = {
-  // preset: 'ts-jest',
 
   moduleFileExtensions: [
     'js',
@@ -29,10 +28,9 @@ module.exports = {
   testEnvironmentOptions: {
     customExportConditions: ['node', 'node-addons'],
   },
-  // setupFilesAfterEnv: [
-  //   // Add matchers via `expect.extend()`
-  //   '<rootDir>/tests/setup.ts',
-  // ],
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
 
   snapshotSerializers: [
     '<rootDir>/node_modules/jest-serializer-vue',

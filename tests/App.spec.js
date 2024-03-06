@@ -1,8 +1,8 @@
 import { flushPromises, mount } from '@vue/test-utils';
 
 import axios from 'axios';
-import App from '../src/App.vue';
-import store from '../src/store';
+import App from '@/App.vue';
+import store from '@/store';
 
 const mockTodoItems = [
   { id: '1', title: 'title1', completed: false },

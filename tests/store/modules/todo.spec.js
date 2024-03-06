@@ -2,7 +2,7 @@ import { faker } from '@faker-js/faker';
 import { createStore } from 'vuex';
 import axios from 'axios';
 import { flushPromises } from '@vue/test-utils';
-import todoState from '../../../src/store/modules/todo';
+import todoState from '@/store/modules/todo';
 
 const { getters } = todoState;
 

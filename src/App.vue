@@ -17,8 +17,8 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import ToDoItem from './components/ToDo/ToDoItem.vue';
-import AddForm from './components/ToDo/AddForm.vue';
+import ToDoItem from '@/components/ToDo/ToDoItem.vue';
+import AddForm from '@/components/ToDo/AddForm.vue';
 
 export default {
   name: 'app',
