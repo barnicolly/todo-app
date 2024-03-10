@@ -6,7 +6,7 @@ module.exports = {
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.ts$': 'ts-jest',
-    '^.+\\.vue$': '@vue/vue3-jest',
+    "^.+\\.vue$": "./vue3JestHack.js",
   },
 
   testPathIgnorePatterns: ['/node_modules/'],
