@@ -12,7 +12,7 @@ module.exports = {
 
   collectCoverage: true,
   coverageThreshold: {
-    global: { statements: 70 },
+    global: { statements: 75 },
   },
   coveragePathIgnorePatterns: ['/node_modules/', '/tests/'],
   testEnvironment: 'jsdom',
