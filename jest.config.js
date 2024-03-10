@@ -2,11 +2,11 @@
 // See: https://facebook.github.io/jest/docs/en/configuration.html
 
 module.exports = {
-  moduleFileExtensions: ['js', 'ts',"json", 'vue'],
+  moduleFileExtensions: ['js', 'ts', 'json', 'vue'],
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.ts$': 'ts-jest',
-    "^.+\\.vue$": "./vue3JestHack.js",
+    '^.+\\.vue$': './vue3JestHack.js',
   },
 
   testPathIgnorePatterns: ['/node_modules/'],

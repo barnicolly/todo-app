@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
-import type { Todo} from '@/types/todo';
+import type { Todo } from '@/types/todo';
 
 interface TodoState {
   todoItems: Todo[];
@@ -30,18 +30,24 @@ export const useTodoStore = defineStore({
       });
     },
     updateDoneStatus(toDoId: string) {
-      const toDoToUpdate = this.todoItems.find((item: Todo) => item.id === toDoId);
+      const toDoToUpdate = this.todoItems.find(
+        (item: Todo) => item.id === toDoId,
+      );
       if (!toDoToUpdate) {
         return;
       }
       toDoToUpdate.completed = !toDoToUpdate.completed;
     },
     deleteToDo(toDoId: string) {
-      const itemIndex = this.todoItems.findIndex((item: Todo) => item.id === toDoId);
+      const itemIndex = this.todoItems.findIndex(
+        (item: Todo) => item.id === toDoId,
+      );
       this.todoItems.splice(itemIndex, 1);
     },
-    editToDo({ toDoId, title }: { toDoId: string, title: string }) {
-      const toDoToUpdate = this.todoItems.find((item: Todo) => item.id === toDoId);
+    editToDo({ toDoId, title }: { toDoId: string; title: string }) {
+      const toDoToUpdate = this.todoItems.find(
+        (item: Todo) => item.id === toDoId,
+      );
       if (!toDoToUpdate) {
         return;
       }

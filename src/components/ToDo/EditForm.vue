@@ -1,15 +1,22 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <div>
-      <input
-        :id="id"
-        type="text"
-        autocomplete="off"
-        v-model.lazy.trim="newTitle" />
-    </div>
-    <div>
-      <button @click="onSubmit" type="button">Сохранить</button>
-      <button type="button" @click="onCancel">Отмена</button>
+    <div class="todo-item__content-inner">
+      <div class="todo-item__edit-input-wrapper">
+        <input
+          class="todo-item__edit-input"
+          :id="id"
+          type="text"
+          autocomplete="off"
+          v-model.lazy.trim="newTitle" />
+      </div>
+      <div class="todo-item__controls">
+        <button class="btn btn--save" @click="onSubmit" type="button">
+          Сохранить
+        </button>
+        <button class="btn btn--cancel" type="button" @click="onCancel">
+          Отмена
+        </button>
+      </div>
     </div>
   </form>
 </template>
@@ -18,7 +25,7 @@
 import { type Ref } from 'vue';
 import type { Todo } from '@/types/todo';
 
-type EditTodoProps = Omit<Todo, "completed">;
+type EditTodoProps = Omit<Todo, 'completed'>;
 
 const props = defineProps<EditTodoProps>();
 
@@ -31,7 +38,7 @@ const emit = defineEmits<{
 }>();
 
 function onSubmit() {
-  if (newTitle.value && newTitle.value !== props.title) {
+  if (newTitle.value) {
     emit('item-edited', newTitle.value);
   }
 }

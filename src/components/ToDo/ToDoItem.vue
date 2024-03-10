@@ -1,24 +1,30 @@
 <template>
-  <div v-if="!isEditing">
-    <div>
-      <input
-        type="checkbox"
-        :id="id"
-        :checked="isCompleted"
-        @change="updateDoneStatus(id)" />
-      <label :for="id">{{ title }}</label>
+  <div>
+    <input
+      class="todo-item__checkbox"
+      type="checkbox"
+      :id="id"
+      :checked="isCompleted"
+      @change="updateDoneStatus(id)" />
+
+    <div v-if="!isEditing" class="todo-item__content">
+      <label class="todo-item__label" @click="toggleToItemEditForm">{{
+        title
+      }}</label>
+      <div class="todo-item__controls">
+        <button class="btn btn--delete" type="button" @click="deleteToDo(id)">
+          <font-awesome-icon icon="trash-alt" />
+        </button>
+      </div>
     </div>
-    <div>
-      <button type="button" @click="toggleToItemEditForm">Редактировать</button>
-      <button type="button" @click="deleteToDo(id)">Удалить</button>
-    </div>
+    <EditForm
+      class="todo-item__content"
+      v-else
+      :id="id"
+      :title="title"
+      @item-edited="itemEdited"
+      @edit-cancelled="editCancelled"></EditForm>
   </div>
-  <EditForm
-    v-else
-    :id="id"
-    :title="title"
-    @item-edited="itemEdited"
-    @edit-cancelled="editCancelled"></EditForm>
 </template>
 
 <script setup lang="ts">
@@ -38,6 +44,7 @@ const { deleteToDo, updateDoneStatus } = store;
 function toggleToItemEditForm() {
   isEditing.value = true;
 }
+
 function editCancelled() {
   isEditing.value = false;
 }

@@ -1,15 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ToDoItem.vue Snapshot has same HTML structure, edit 1`] = `
-<form>
-  <div><input id="some-uuid" type="text" autocomplete="off"></div>
-  <div><button type="button">Сохранить</button><button type="button">Отмена</button></div>
-</form>
+<div><input class="todo-item__checkbox" type="checkbox" id="some-uuid">
+  <div class="todo-item__content"><label class="todo-item__label">some-title</label>
+    <div class="todo-item__controls"><button class="btn btn--delete" type="button">
+        <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+      </button></div>
+  </div>
+</div>
 `;
 
 exports[`ToDoItem.vue Snapshot has same HTML structure, without edit 1`] = `
-<div>
-  <div><input type="checkbox" id="some-uuid"><label for="some-uuid">some-title</label></div>
-  <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
+<div><input class="todo-item__checkbox" type="checkbox" id="some-uuid">
+  <div class="todo-item__content"><label class="todo-item__label">some-title</label>
+    <div class="todo-item__controls"><button class="btn btn--delete" type="button">
+        <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+      </button></div>
+  </div>
 </div>
 `;

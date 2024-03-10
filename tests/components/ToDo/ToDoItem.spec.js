@@ -4,7 +4,6 @@ import ToDoItem from '@/components/ToDo/ToDoItem.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { useTodoStore } from '@/store/todo';
 
-// todo-misha переделать селекторы как будут классы;
 describe('ToDoItem.vue', () => {
   let wrapper;
   const id = faker.string.uuid();
@@ -25,7 +24,7 @@ describe('ToDoItem.vue', () => {
   });
 
   it('should correct initialize, checked false', () => {
-    const input = wrapper.find('input');
+    const input = wrapper.find('.todo-item__checkbox');
     expect(wrapper.vm.isEditing).toBeFalsy();
     expect(input.element.checked).toBeFalsy();
   });
@@ -38,18 +37,18 @@ describe('ToDoItem.vue', () => {
         completed: true,
       },
     });
-    const input = wrapper.find('input');
+    const input = wrapper.find('.todo-item__checkbox');
     expect(wrapper.vm.isEditing).toBeFalsy();
     expect(input.element.checked).toBeTruthy();
   });
 
-  it('click edit btn', () => {
-    wrapper.find('button:nth-child(1)').trigger('click');
+  it('click edit label', () => {
+    wrapper.find('.todo-item__label').trigger('click');
     expect(wrapper.vm.isEditing).toBeTruthy();
   });
 
   it('click edit btn -> save', async () => {
-    await wrapper.find('button:nth-child(1)').trigger('click');
+    await wrapper.find('.todo-item__label').trigger('click');
     expect(wrapper.vm.isEditing).toBeTruthy();
 
     const store = useTodoStore();
@@ -62,7 +61,7 @@ describe('ToDoItem.vue', () => {
   });
 
   it('click checkbox, init checked false', async () => {
-    const checkbox = wrapper.find('input');
+    const checkbox = wrapper.find('.todo-item__checkbox');
     await checkbox.setChecked();
 
     const store = useTodoStore();
@@ -82,7 +81,7 @@ describe('ToDoItem.vue', () => {
         plugins: [createTestingPinia({ stubActions: false })],
       },
     });
-    const checkbox = wrapper.find('input');
+    const checkbox = wrapper.find('.todo-item__checkbox');
     await checkbox.setValue(false);
     expect(checkbox.element.checked).toBeFalsy();
     const store = useTodoStore();
@@ -91,7 +90,7 @@ describe('ToDoItem.vue', () => {
   });
 
   it('click delete btn', () => {
-    wrapper.find('button:nth-child(2)').trigger('click');
+    wrapper.find('.btn--delete').trigger('click');
     const store = useTodoStore();
     expect(store.deleteToDo).toHaveBeenCalledTimes(1);
     expect(store.deleteToDo).toHaveBeenCalledWith(id);

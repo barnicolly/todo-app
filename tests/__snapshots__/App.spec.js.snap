@@ -1,23 +1,28 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App.vue Snapshot has same HTML structure 1`] = `
-<div id="app">
-  <h1>To-Do List</h1>
-  <form><input type="text" autocomplete="off"><button type="button">Добавить</button></form>
-  <h2>Выполнено задач: 1/2</h2>
+<div id="app" class="todo-list">
+  <h1 class="todo-list__header">Список дел</h1>
+  <form class="todo-list__add-form"><input type="text" autocomplete="off"><button class="btn btn--add" type="button">+</button></form>
   <ul>
     <li>
-      <div>
-        <div><input type="checkbox" id="1"><label for="1">title1</label></div>
-        <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
+      <div class="todo-list__item todo-item"><input class="todo-item__checkbox" type="checkbox" id="1">
+        <div class="todo-item__content"><label class="todo-item__label">title1</label>
+          <div class="todo-item__controls"><button class="btn btn--delete" type="button">
+              <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+            </button></div>
+        </div>
       </div>
     </li>
     <li>
-      <div>
-        <div><input type="checkbox" id="2"><label for="2">title2</label></div>
-        <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
+      <div class="todo-list__item todo-item"><input class="todo-item__checkbox" type="checkbox" id="2">
+        <div class="todo-item__content"><label class="todo-item__label">title2</label>
+          <div class="todo-item__controls"><button class="btn btn--delete" type="button">
+              <font-awesome-icon icon="trash-alt"></font-awesome-icon>
+            </button></div>
+        </div>
       </div>
     </li>
-  </ul>
+  </ul><small>Выполнено задач: 1 из 2</small>
 </div>
 `;

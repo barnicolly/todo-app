@@ -1,0 +1,85 @@
+.todo-list {
+  background: #fff;
+  margin: 2rem 0 4rem 0;
+  padding: 0 1rem 1rem;
+  position: relative;
+  box-shadow:
+    0 2px 4px 0 rgba(0, 0, 0, 0.2),
+    0 2.5rem 5rem 0 rgba(0, 0, 0, 0.1);
+
+  @media screen and (min-width: 550px) {
+    padding: 4rem;
+  }
+
+  .todo-list__header {
+    display: block;
+    min-width: 100%;
+    width: 100%;
+    text-align: center;
+    margin: 0 0 1rem;
+  }
+
+  input {
+    border-radius: 5px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+  }
+
+  .todo-list__add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+.todo-item {
+  display: flex;
+  align-items: baseline;
+  //justify-content: space-between;
+  padding-bottom: 5px;
+
+  .todo-item__checkbox {
+    //width: 20px;
+    flex-basis: 30px;
+    //flex-grow: 1;
+  }
+
+  .todo-item__content {
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    //width: calc(100% - 50px);
+
+    cursor: pointer;
+  }
+
+  .todo-item__checkbox {
+    cursor: pointer;
+  }
+
+  .todo-item__label {
+    cursor: pointer;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  .todo-item__content-inner {
+    width: 100%;
+  }
+
+  .todo-item__edit-input-wrapper {
+    padding-bottom: 5px;
+  }
+
+  .todo-item__edit-input {
+    width: 100%;
+  }
+
+  .todo-item__controls {
+    display: flex;
+    gap: 5px;
+  }
+}

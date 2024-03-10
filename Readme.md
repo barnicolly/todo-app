@@ -13,7 +13,8 @@
    2. unit тесты state (pinia)
 4. eslint (код стайл от airbnb)
 5. prettier
-6. docker
+6. sass + БЭМ
+7. docker
 
 ### Документация:
 

@@ -36,7 +36,7 @@ describe('AddForm.vue', () => {
     await input.trigger('change');
     expect(wrapper.vm.title).toBe(changedTitle);
 
-    wrapper.find('button[type="button"]').trigger('click');
+    wrapper.find('.btn--add').trigger('click');
 
     const store = useTodoStore();
 

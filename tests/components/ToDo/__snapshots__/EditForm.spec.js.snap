@@ -2,7 +2,9 @@
 
 exports[`EditForm.vue Snapshot has same HTML structure 1`] = `
 <form>
-  <div><input id="some-uuid" type="text" autocomplete="off"></div>
-  <div><button type="button">Сохранить</button><button type="button">Отмена</button></div>
+  <div class="todo-item__content-inner">
+    <div class="todo-item__edit-input-wrapper"><input class="todo-item__edit-input" id="some-uuid" type="text" autocomplete="off"></div>
+    <div class="todo-item__controls"><button class="btn btn--save" type="button">Сохранить</button><button class="btn btn--cancel" type="button">Отмена</button></div>
+  </div>
 </form>
 `;

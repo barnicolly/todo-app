@@ -2,7 +2,6 @@ import { shallowMount } from '@vue/test-utils';
 import { faker } from '@faker-js/faker';
 import EditForm from '@/components/ToDo/EditForm.vue';
 
-// todo-misha переделать селекторы как будут классы;
 describe('EditForm.vue', () => {
   let wrapper;
   let id;
@@ -28,7 +27,7 @@ describe('EditForm.vue', () => {
   });
 
   it('click cancel btn', () => {
-    wrapper.find('button:nth-child(2)').trigger('click');
+    wrapper.find('.btn--cancel').trigger('click');
     expect(wrapper.emitted()).toHaveProperty('edit-cancelled');
   });
 
@@ -39,7 +38,7 @@ describe('EditForm.vue', () => {
     await input.trigger('change');
 
     expect(wrapper.vm.newTitle).toBe('new value');
-    wrapper.find('button:nth-child(1)').trigger('click');
+    wrapper.find('.btn--save').trigger('click');
     expect(wrapper.emitted()).toHaveProperty('item-edited');
   });
 });

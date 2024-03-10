@@ -1,0 +1,14 @@
+.btn {
+  cursor: pointer;
+
+  &.btn--delete {
+    color: #721c24;
+  }
+
+  &.btn--save {
+    border-radius: 5px;
+    padding: 5px 10px;
+    background-color: blue;
+    color: #d1ecf1;
+  }
+}

@@ -1,13 +1,17 @@
 <template>
-  <div id="app">
-    <h1>To-Do List</h1>
-    <AddForm></AddForm>
-    <h2>{{ listSummary }}</h2>
+  <div id="app" class="todo-list">
+    <h1 class="todo-list__header">Список дел</h1>
+    <AddForm class="todo-list__add-form"></AddForm>
     <ul>
       <li v-for="item in todoItems" :key="item.id">
-        <ToDoItem :title="item.title" :completed="item.completed" :id="item.id"></ToDoItem>
+        <ToDoItem
+          :title="item.title"
+          :completed="item.completed"
+          :id="item.id"
+          class="todo-list__item todo-item"></ToDoItem>
       </li>
     </ul>
+    <small>{{ listSummary }}</small>
   </div>
 </template>
 
@@ -27,6 +31,6 @@ onMounted(async (): Promise<void> => {
 
 const listSummary = computed(
   (): string =>
-    `Выполнено задач: ${store.allCompletedToDoItems.length}/${store.allToDoItems.length}`,
+    `Выполнено задач: ${store.allCompletedToDoItems.length} из ${store.allToDoItems.length}`,
 );
 </script>
