@@ -9,11 +9,12 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { useTodoStore } from '@/store/todo';
+import { mapActions } from 'pinia';
 
 export default {
   methods: {
-    ...mapMutations([
+    ...mapActions(useTodoStore, [
       'addToDo',
     ]),
     onSubmit() {

@@ -2,7 +2,7 @@ import { flushPromises, mount } from '@vue/test-utils';
 
 import axios from 'axios';
 import App from '@/App.vue';
-import store from '@/store';
+import { createTestingPinia } from '@pinia/testing';
 
 const mockTodoItems = [
   { id: '1', title: 'title1', completed: false },
@@ -14,7 +14,7 @@ describe('App.vue Snapshot', () => {
     jest.spyOn(axios, 'get').mockResolvedValue({ data: mockTodoItems });
     const wrapper = mount(App, {
       global: {
-        plugins: [store],
+        plugins: [createTestingPinia({ stubActions: false })],
       },
     });
     expect(axios.get).toHaveBeenCalledTimes(1);

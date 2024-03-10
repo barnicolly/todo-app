@@ -28,7 +28,8 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex';
+import { mapActions } from 'pinia';
+import { useTodoStore } from '@/store/todo';
 import EditForm from './EditForm.vue';
 
 export default {
@@ -51,7 +52,7 @@ export default {
     },
   },
   methods: {
-    ...mapMutations([
+    ...mapActions(useTodoStore, [
       'deleteToDo',
       'updateDoneStatus',
       'editToDo',

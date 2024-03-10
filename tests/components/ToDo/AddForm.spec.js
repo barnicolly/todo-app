@@ -1,25 +1,18 @@
 import { shallowMount } from '@vue/test-utils';
-import { Store } from 'vuex';
 import AddForm from '@/components/ToDo/AddForm.vue';
+import { createTestingPinia } from '@pinia/testing';
+import { useTodoStore } from '@/store/todo';
 
 // todo-misha переделать селекторы как будут классы;
 describe('AddForm.vue', () => {
   let wrapper;
   const defaultTitle = '';
   const changedTitle = 'changed-title';
-  const addToDoMock = jest.fn();
-  const $store = new Store({
-    mutations: {
-      addToDo: addToDoMock,
-    },
-  });
 
   beforeEach(() => {
     wrapper = shallowMount(AddForm, {
       global: {
-        mocks: {
-          $store,
-        },
+        plugins: [createTestingPinia({ stubActions: false })],
       },
     });
   });
@@ -44,8 +37,11 @@ describe('AddForm.vue', () => {
     expect(wrapper.vm.title).toBe(changedTitle);
 
     wrapper.find('button[type="button"]').trigger('click');
-    expect(addToDoMock.mock.calls.length).toBe(1);
-    expect(addToDoMock.mock.calls[0][1]).toBe(changedTitle);
+
+    const store = useTodoStore();
+
+    expect(store.addToDo).toHaveBeenCalledTimes(1);
+    expect(store.addToDo).toHaveBeenCalledWith(changedTitle);
     expect(wrapper.vm.title).toBe(defaultTitle);
   });
 });

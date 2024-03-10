@@ -1,7 +1,8 @@
 import { shallowMount, mount } from '@vue/test-utils';
 import { faker } from '@faker-js/faker';
-import { Store } from 'vuex';
 import ToDoItem from '@/components/ToDo/ToDoItem.vue';
+import { createTestingPinia } from '@pinia/testing';
+import { useTodoStore } from '@/store/todo';
 
 // todo-misha переделать селекторы как будут классы;
 describe('ToDoItem.vue', () => {
@@ -9,17 +10,6 @@ describe('ToDoItem.vue', () => {
   const id = faker.string.uuid();
   const title = faker.lorem.sentence();
   const completed = false;
-
-  const deleteToDoMock = jest.fn();
-  const editToDoMock = jest.fn();
-  const updateDoneStatusMock = jest.fn();
-  const $store = new Store({
-    mutations: {
-      deleteToDo: deleteToDoMock,
-      editToDo: editToDoMock,
-      updateDoneStatus: updateDoneStatusMock,
-    },
-  });
 
   beforeEach(() => {
     wrapper = shallowMount(ToDoItem, {
@@ -29,9 +19,7 @@ describe('ToDoItem.vue', () => {
         completed,
       },
       global: {
-        mocks: {
-          $store,
-        },
+        plugins: [createTestingPinia({ stubActions: false })],
       },
     });
   });
@@ -64,17 +52,20 @@ describe('ToDoItem.vue', () => {
     await wrapper.find('button:nth-child(1)').trigger('click');
     expect(wrapper.vm.isEditing).toBeTruthy();
 
+    const store = useTodoStore();
     wrapper.vm.itemEdited('changed-title');
-    expect(editToDoMock.mock.calls.length).toBe(1);
-    expect(editToDoMock.mock.calls[0][1]).toStrictEqual({ title: 'changed-title', toDoId: id });
+    expect(store.editToDo).toHaveBeenCalledTimes(1);
+    expect(store.editToDo).toHaveBeenCalledWith({ title: 'changed-title', toDoId: id });
   });
 
   it('click checkbox, init checked false', async () => {
     const checkbox = wrapper.find('input');
     await checkbox.setChecked();
+
+    const store = useTodoStore();
     expect(checkbox.element.checked).toBeTruthy();
-    expect(updateDoneStatusMock.mock.calls.length).toBe(1);
-    expect(updateDoneStatusMock.mock.calls[0][1]).toBe(id);
+    expect(store.updateDoneStatus).toHaveBeenCalledTimes(1);
+    expect(store.updateDoneStatus).toHaveBeenCalledWith(id);
   });
 
   it('click checkbox, init checked true', async () => {
@@ -85,21 +76,22 @@ describe('ToDoItem.vue', () => {
         completed: true,
       },
       global: {
-        mocks: {
-          $store,
-        },
+        plugins: [createTestingPinia({ stubActions: false })],
       },
     });
     const checkbox = wrapper.find('input');
-    checkbox.element.checked = false;
-    expect(updateDoneStatusMock.mock.calls.length).toBe(1);
-    expect(updateDoneStatusMock.mock.calls[0][1]).toBe(id);
+    await checkbox.setValue(false);
+    expect(checkbox.element.checked).toBeFalsy();
+    const store = useTodoStore();
+    expect(store.updateDoneStatus).toHaveBeenCalledTimes(1);
+    expect(store.updateDoneStatus).toHaveBeenCalledWith(id);
   });
 
   it('click delete btn', () => {
     wrapper.find('button:nth-child(2)').trigger('click');
-    expect(deleteToDoMock.mock.calls.length).toBe(1);
-    expect(deleteToDoMock.mock.calls[0][1]).toBe(id);
+    const store = useTodoStore();
+    expect(store.deleteToDo).toHaveBeenCalledTimes(1);
+    expect(store.deleteToDo).toHaveBeenCalledWith(id);
   });
 });
 
