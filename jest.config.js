@@ -2,11 +2,11 @@
 // See: https://facebook.github.io/jest/docs/en/configuration.html
 
 module.exports = {
-  moduleFileExtensions: ['js', 'ts', 'vue'],
+  moduleFileExtensions: ['js', 'ts',"json", 'vue'],
   transform: {
     '^.+\\.js$': 'babel-jest',
     '^.+\\.ts$': 'ts-jest',
-    '.*\\.(vue)$': '@vue/vue3-jest',
+    '^.+\\.vue$': '@vue/vue3-jest',
   },
 
   testPathIgnorePatterns: ['/node_modules/'],
@@ -23,7 +23,6 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
-
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
 
   verbose: true,

@@ -24,7 +24,7 @@
 <script setup lang="ts">
 import { useTodoStore } from '@/store/todo';
 import { computed, ref } from 'vue';
-import type { Todo } from '@/types/todo';
+import { type Todo } from '@/types/todo';
 import EditForm from './EditForm.vue';
 
 const props = defineProps<Todo>();

@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, defineEmits, type Ref } from 'vue';
+import { type Ref } from 'vue';
 import type { Todo } from '@/types/todo';
 
-type EditTodo = Omit<Todo, "completed">;
+type EditTodoProps = Omit<Todo, "completed">;
 
-const props = defineProps<EditTodo>();
+const props = defineProps<EditTodoProps>();
 
 const newTitle: Ref = defineModel<string>('newTitle');
 newTitle.value = props.title;
