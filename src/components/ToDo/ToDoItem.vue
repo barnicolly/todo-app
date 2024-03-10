@@ -21,16 +21,13 @@
     @edit-cancelled="editCancelled"></EditForm>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useTodoStore } from '@/store/todo';
 import { computed, ref } from 'vue';
+import type { Todo } from '@/types/todo';
 import EditForm from './EditForm.vue';
 
-const props = defineProps({
-  title: { required: true, type: String },
-  completed: { default: false, type: Boolean },
-  id: { required: true, type: String },
-});
+const props = defineProps<Todo>();
 
 const isCompleted = computed(() => props.completed);
 const isEditing = ref(false);
@@ -45,7 +42,7 @@ function editCancelled() {
   isEditing.value = false;
 }
 
-function itemEdited(newTitle) {
+function itemEdited(newTitle: string) {
   store.editToDo({ title: newTitle, toDoId: props.id });
   isEditing.value = false;
 }

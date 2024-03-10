@@ -5,11 +5,11 @@
   </form>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useTodoStore } from '@/store/todo';
-import { ref } from 'vue';
+import { Ref, ref } from 'vue';
 
-const title = ref('');
+const title: Ref<string> = ref('');
 const store = useTodoStore();
 
 function onSubmit() {

@@ -14,22 +14,21 @@
   </form>
 </template>
 
-<script setup>
-const props = defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-});
+<script setup lang="ts">
+import { defineProps, defineEmits, type Ref } from 'vue';
+import type { Todo } from '@/types/todo';
 
-const newTitle = defineModel('newTitle');
+type EditTodo = Omit<Todo, "completed">;
+
+const props = defineProps<EditTodo>();
+
+const newTitle: Ref = defineModel<string>('newTitle');
 newTitle.value = props.title;
 
-const emit = defineEmits(['item-edited', 'edit-cancelled']);
+const emit = defineEmits<{
+  'item-edited': [title: string];
+  'edit-cancelled': [];
+}>();
 
 function onSubmit() {
   if (newTitle.value && newTitle.value !== props.title) {
