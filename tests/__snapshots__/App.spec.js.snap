@@ -9,13 +9,13 @@ exports[`App.vue Snapshot has same HTML structure 1`] = `
     <li>
       <div>
         <div><input type="checkbox" id="1"><label for="1">title1</label></div>
-        <div><button type="button"> Редактировать </button><button type="button"> Удалить </button></div>
+        <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
       </div>
     </li>
     <li>
       <div>
         <div><input type="checkbox" id="2"><label for="2">title2</label></div>
-        <div><button type="button"> Редактировать </button><button type="button"> Удалить </button></div>
+        <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
       </div>
     </li>
   </ul>

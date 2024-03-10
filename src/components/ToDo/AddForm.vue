@@ -5,25 +5,18 @@
   </form>
 </template>
 
-<script>
+<script setup>
 import { useTodoStore } from '@/store/todo';
-import { mapActions } from 'pinia';
+import { ref } from 'vue';
 
-export default {
-  methods: {
-    ...mapActions(useTodoStore, ['addToDo']),
-    onSubmit() {
-      if (this.title === '') {
-        return;
-      }
-      this.addToDo(this.title);
-      this.title = '';
-    },
-  },
-  data() {
-    return {
-      title: '',
-    };
-  },
-};
+const title = ref('');
+const store = useTodoStore();
+
+function onSubmit() {
+  if (title.value === '') {
+    return;
+  }
+  store.addToDo(title.value);
+  title.value = '';
+}
 </script>

@@ -3,13 +3,13 @@
 exports[`ToDoItem.vue Snapshot has same HTML structure, edit 1`] = `
 <form>
   <div><input id="some-uuid" type="text" autocomplete="off"></div>
-  <div><button type="button"> Сохранить </button><button type="button"> Отмена </button></div>
+  <div><button type="button">Сохранить</button><button type="button">Отмена</button></div>
 </form>
 `;
 
 exports[`ToDoItem.vue Snapshot has same HTML structure, without edit 1`] = `
 <div>
   <div><input type="checkbox" id="some-uuid"><label for="some-uuid">some-title</label></div>
-  <div><button type="button"> Редактировать </button><button type="button"> Удалить </button></div>
+  <div><button type="button">Редактировать</button><button type="button">Удалить</button></div>
 </div>
 `;

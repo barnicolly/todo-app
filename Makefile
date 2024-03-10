@@ -10,6 +10,7 @@ dev:
 	cd docker && docker-compose exec node sh -c "npm i && npm run serve"
 cs:
 	cd docker && docker-compose exec node sh -c "npm run lint -- --fix"
+	cd docker && docker-compose exec node sh -c "npx prettier . --write"
 
 go: up ps dev
 

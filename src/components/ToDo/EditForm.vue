@@ -14,32 +14,30 @@
   </form>
 </template>
 
-<script>
-export default {
-  props: {
-    title: {
-      type: String,
-      required: true,
-    },
-    id: {
-      type: String,
-      required: true,
-    },
+<script setup>
+const props = defineProps({
+  title: {
+    type: String,
+    required: true,
   },
-  data() {
-    return {
-      newTitle: this.title,
-    };
+  id: {
+    type: String,
+    required: true,
   },
-  methods: {
-    onSubmit() {
-      if (this.newTitle && this.newTitle !== this.title) {
-        this.$emit('item-edited', this.newTitle);
-      }
-    },
-    onCancel() {
-      this.$emit('edit-cancelled');
-    },
-  },
-};
+});
+
+const newTitle = defineModel('newTitle');
+newTitle.value = props.title;
+
+const emit = defineEmits(['item-edited', 'edit-cancelled']);
+
+function onSubmit() {
+  if (newTitle.value && newTitle.value !== props.title) {
+    emit('item-edited', newTitle.value);
+  }
+}
+
+function onCancel() {
+  emit('edit-cancelled');
+}
 </script>

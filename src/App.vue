@@ -12,38 +12,22 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import ToDoItem from '@/components/ToDo/ToDoItem.vue';
 import AddForm from '@/components/ToDo/AddForm.vue';
-import { mapActions, mapState, mapStores, storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia';
 import { useTodoStore } from '@/store/todo';
+import { onMounted, computed } from 'vue';
 
-export default {
-  name: 'app',
-  components: {
-    ToDoItem,
-    AddForm,
-  },
-  setup() {
-    const store = useTodoStore();
+const store = useTodoStore();
+const { todoItems } = storeToRefs(store);
 
-    const { todoItems } = storeToRefs(store);
-    // const { toggleCompleted, deleteTodo } = store;
+onMounted(async () => {
+  await store.fetchTodoItems();
+});
 
-    return { todoItems };
-  },
-  computed: {
-    ...mapStores(useTodoStore),
-    ...mapState(useTodoStore, ['allToDoItems', 'allCompletedToDoItems']),
-    listSummary() {
-      return `Выполнено задач: ${this.allCompletedToDoItems.length}/${this.allToDoItems.length}`;
-    },
-  },
-  async mounted() {
-    await this.fetchTodoItems();
-  },
-  methods: {
-    ...mapActions(useTodoStore, ['fetchTodoItems']),
-  },
-};
+const listSummary = computed(
+  () =>
+    `Выполнено задач: ${store.allCompletedToDoItems.length}/${store.allToDoItems.length}`,
+);
 </script>

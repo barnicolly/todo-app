@@ -29,6 +29,7 @@ module.exports = {
       'error',
       { devDependencies: ['**/*.spec.js'] },
     ],
+    'import/prefer-default-export': 'warn',
   },
   settings: {
     'import/resolver': {
