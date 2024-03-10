@@ -1,4 +1,4 @@
-FROM node:18-alpine3.19
+FROM node:20-alpine3.19
 
 RUN apk add --no-cache autoconf automake file g++ libtool make nasm libpng-dev
 
