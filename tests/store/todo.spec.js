@@ -7,9 +7,7 @@ import { useTodoStore } from '@/store/todo';
 
 describe('Todo state, actions', () => {
   beforeEach(() => {
-    const todoItems = [
-      { id: '1', title: 'title1', completed: false },
-    ];
+    const todoItems = [{ id: '1', title: 'title1', completed: false }];
     setActivePinia(createPinia());
     const store = useTodoStore();
     store.todoItems = todoItems;
@@ -56,9 +54,7 @@ describe('Todo state, actions', () => {
   it('fetchTodoItems', async () => {
     const store = useTodoStore();
     store.$reset();
-    const todoItems = [
-      { id: '1', title: 'title1', completed: false },
-    ];
+    const todoItems = [{ id: '1', title: 'title1', completed: false }];
     jest.spyOn(axios, 'get').mockResolvedValue({ data: todoItems });
     await store.fetchTodoItems();
     expect(axios.get).toHaveBeenCalledTimes(1);

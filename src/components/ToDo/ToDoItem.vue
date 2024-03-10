@@ -2,29 +2,23 @@
   <div v-if="!isEditing">
     <div>
       <input
-          type="checkbox"
-          :id="id"
-          :checked="isCompleted"
-          @change="updateDoneStatus(id)"/>
+        type="checkbox"
+        :id="id"
+        :checked="isCompleted"
+        @change="updateDoneStatus(id)" />
       <label :for="id">{{ title }}</label>
     </div>
     <div>
-      <button
-          type="button"
-          @click="toggleToItemEditForm">
-        Редактировать
-      </button>
-      <button type="button" @click="deleteToDo(id)">
-        Удалить
-      </button>
+      <button type="button" @click="toggleToItemEditForm">Редактировать</button>
+      <button type="button" @click="deleteToDo(id)">Удалить</button>
     </div>
   </div>
   <EditForm
-      v-else
-      :id="id"
-      :title="title"
-      @item-edited="itemEdited"
-      @edit-cancelled="editCancelled"></EditForm>
+    v-else
+    :id="id"
+    :title="title"
+    @item-edited="itemEdited"
+    @edit-cancelled="editCancelled"></EditForm>
 </template>
 
 <script>
@@ -52,11 +46,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(useTodoStore, [
-      'deleteToDo',
-      'updateDoneStatus',
-      'editToDo',
-    ]),
+    ...mapActions(useTodoStore, ['deleteToDo', 'updateDoneStatus', 'editToDo']),
     toggleToItemEditForm() {
       this.isEditing = true;
     },

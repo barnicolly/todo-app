@@ -5,7 +5,12 @@ module.exports = {
     es6: true,
     jest: true,
   },
-  extends: ['eslint-config-airbnb-base', 'plugin:vue/essential', 'eslint:recommended'],
+  extends: [
+    'eslint-config-airbnb-base',
+    'plugin:vue/essential',
+    'eslint:recommended',
+    'prettier',
+  ],
   parserOptions: {
     parser: '@babel/eslint-parser',
   },
@@ -17,19 +22,18 @@ module.exports = {
       'error',
       {
         props: true,
-        ignorePropertyModificationsFor: [
-          'state',
-        ],
+        ignorePropertyModificationsFor: ['state'],
       },
     ],
-    'import/no-extraneous-dependencies': ['error', { devDependencies: ['**/*.spec.js'] }],
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.spec.js'] },
+    ],
   },
   settings: {
     'import/resolver': {
       alias: {
-        map: [
-          ['@', './src'],
-        ],
+        map: [['@', './src']],
         extensions: ['.ts', '.js', '.jsx', '.json'],
       },
     },

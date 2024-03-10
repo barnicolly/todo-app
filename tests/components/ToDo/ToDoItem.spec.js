@@ -55,7 +55,10 @@ describe('ToDoItem.vue', () => {
     const store = useTodoStore();
     wrapper.vm.itemEdited('changed-title');
     expect(store.editToDo).toHaveBeenCalledTimes(1);
-    expect(store.editToDo).toHaveBeenCalledWith({ title: 'changed-title', toDoId: id });
+    expect(store.editToDo).toHaveBeenCalledWith({
+      title: 'changed-title',
+      toDoId: id,
+    });
   });
 
   it('click checkbox, init checked false', async () => {

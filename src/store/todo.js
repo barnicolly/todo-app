@@ -9,7 +9,9 @@ export const useTodoStore = defineStore({
   }),
   actions: {
     async fetchTodoItems(limit = 5) {
-      const items = await axios.get(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`);
+      const items = await axios.get(
+        `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`,
+      );
       this.todoItems = items.data.map((item) => ({
         ...item,
         id: item.id.toString(),
@@ -44,10 +46,7 @@ export const useTodoStore = defineStore({
   getters: {
     allToDoItems: (state) => state.todoItems,
     allCompletedToDoItems(state) {
-      return state.todoItems
-        .filter(
-          (item) => item.completed,
-        );
+      return state.todoItems.filter((item) => item.completed);
     },
   },
 });

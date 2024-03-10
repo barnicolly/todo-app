@@ -1,17 +1,17 @@
 version: '3'
 
 services:
-    node:
-      ports:
-        - "8200:8080"
-      build:
-        context: ./node
-      volumes:
-        - ../:/app
-      tty: true
-      deploy:
-          resources:
-              limits:
-                  memory: 3000M
-              reservations:
-                  memory: 2000M
+  node:
+    ports:
+      - '8200:8080'
+    build:
+      context: ./node
+    volumes:
+      - ../:/app
+    tty: true
+    deploy:
+      resources:
+        limits:
+          memory: 3000M
+        reservations:
+          memory: 2000M

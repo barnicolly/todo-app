@@ -1,9 +1,6 @@
 <template>
   <form @submit.prevent="onSubmit">
-    <input
-      type="text"
-      autocomplete="off"
-      v-model.lazy.trim="title" />
+    <input type="text" autocomplete="off" v-model.lazy.trim="title" />
     <button type="button" @click="onSubmit">Добавить</button>
   </form>
 </template>
@@ -14,9 +11,7 @@ import { mapActions } from 'pinia';
 
 export default {
   methods: {
-    ...mapActions(useTodoStore, [
-      'addToDo',
-    ]),
+    ...mapActions(useTodoStore, ['addToDo']),
     onSubmit() {
       if (this.title === '') {
         return;

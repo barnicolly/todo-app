@@ -2,18 +2,14 @@
   <form @submit.prevent="onSubmit">
     <div>
       <input
-          :id="id"
-          type="text"
-          autocomplete="off"
-          v-model.lazy.trim="newTitle"/>
+        :id="id"
+        type="text"
+        autocomplete="off"
+        v-model.lazy.trim="newTitle" />
     </div>
     <div>
-      <button @click="onSubmit" type="button">
-        Сохранить
-      </button>
-      <button type="button" @click="onCancel">
-        Отмена
-      </button>
+      <button @click="onSubmit" type="button">Сохранить</button>
+      <button type="button" @click="onCancel">Отмена</button>
     </div>
   </form>
 </template>
