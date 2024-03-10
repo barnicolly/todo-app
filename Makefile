@@ -7,7 +7,7 @@ remove:
 node:
 	cd docker && docker-compose exec node sh
 dev:
-	cd docker && docker-compose exec node sh -c "npm i && npm run serve"
+	cd docker && docker-compose exec node sh -c "npm i --legacy-peer-deps && npm run serve"
 cs:
 	cd docker && docker-compose exec node sh -c "npm run lint -- --fix"
 	cd docker && docker-compose exec node sh -c "npx prettier . --write"

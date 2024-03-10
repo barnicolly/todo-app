@@ -36,7 +36,7 @@ const isCompleted = computed(() => props.completed);
 const isEditing = ref(false);
 
 const store = useTodoStore();
-const { deleteToDo, updateDoneStatus, editToDo } = store;
+const { deleteToDo, updateDoneStatus } = store;
 
 function toggleToItemEditForm() {
   isEditing.value = true;
@@ -46,7 +46,7 @@ function editCancelled() {
 }
 
 function itemEdited(newTitle) {
-  editToDo({ title: newTitle, toDoId: props.id });
+  store.editToDo({ title: newTitle, toDoId: props.id });
   isEditing.value = false;
 }
 </script>

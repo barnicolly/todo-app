@@ -2,9 +2,10 @@
 // See: https://facebook.github.io/jest/docs/en/configuration.html
 
 module.exports = {
-  moduleFileExtensions: ['js', 'vue'],
+  moduleFileExtensions: ['js', 'ts', 'vue'],
   transform: {
     '^.+\\.js$': 'babel-jest',
+    '^.+\\.ts$': 'ts-jest',
     '.*\\.(vue)$': '@vue/vue3-jest',
   },
 
