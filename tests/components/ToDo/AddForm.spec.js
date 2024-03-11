@@ -25,7 +25,7 @@ describe('AddForm.vue', () => {
     const input = wrapper.find('input');
 
     input.element.value = changedTitle;
-    await input.trigger('change');
+    await input.trigger('input');
 
     expect(wrapper.vm.title).toBe(changedTitle);
   });
@@ -33,7 +33,7 @@ describe('AddForm.vue', () => {
   it('click add btn', async () => {
     const input = wrapper.find('input');
     input.element.value = changedTitle;
-    await input.trigger('change');
+    await input.trigger('input');
     expect(wrapper.vm.title).toBe(changedTitle);
 
     wrapper.find('.btn--add').trigger('click');
