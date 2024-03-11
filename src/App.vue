@@ -1,6 +1,7 @@
 <template>
   <div class="todo-list">
     <h1 class="todo-list__header">Список дел</h1>
+
     <CAlert
       color="danger"
       :visible="alert !== ''"
@@ -9,16 +10,22 @@
       <div>{{ alert }}</div>
     </CAlert>
     <AddForm class="todo-list__add-form"></AddForm>
-    <ul>
-      <li v-for="item in todoItems" :key="item.id">
+
+    <draggable v-model="todoItems" item-key="id">
+      <template #item="{ element }">
         <ToDoItem
-          :title="item.title"
-          :completed="item.completed"
-          :id="item.id"
+          :title="element.title"
+          :completed="element.completed"
+          :id="element.id"
           class="todo-list__item todo-item"></ToDoItem>
-      </li>
-    </ul>
+      </template>
+    </draggable>
     <small>{{ listSummary }}</small>
+    <div>
+      <small>
+        Элементы можно переносить, редактирование по клику на текст элемента
+      </small>
+    </div>
     <div>
       <small>
         Исходный код:&nbsp;
@@ -38,6 +45,7 @@ import { useTodoStore } from '@/store/todo';
 import { onMounted, computed } from 'vue';
 import { CAlert } from '@coreui/vue';
 import { useAlertStore } from '@/store/alert';
+import draggable from 'vuedraggable';
 
 const store = useTodoStore();
 const alertStore = useAlertStore();

@@ -3,18 +3,21 @@
 ### Технологический стек
 
 1. vue 3 (composition api)
-2. pinia (какое-то время был vuex в качестве state менеджера). Выбран pinia,
+2. сторонние библиотеки
+   1. draggable https://github.com/SortableJS/vue.draggable.next
+   2. coreui (алерты) https://coreui.io/vue/docs/4.x/getting-started/introduction.html
+3. pinia (какое-то время был vuex в качестве state менеджера). Выбран pinia,
    т.к:
    1. проще тестировать
    2. написан на typescript (лучшая поддержка ide, меньше магии)
    3. vue рекомендует в качестве state менеджера по умолчанию
-3. jest (установлено минимальное покрытие в 75%)
+4. jest (установлено минимальное покрытие в 75%)
    1. функциональные тесты компонентов + snapshots
    2. unit тесты state (pinia)
-4. eslint (код стайл от airbnb)
-5. prettier
-6. sass + БЭМ
-7. docker
+5. eslint (код стайл от airbnb)
+6. prettier
+7. sass + БЭМ
+8. docker
 
 ### Code coverage
 
