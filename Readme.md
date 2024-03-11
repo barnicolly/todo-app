@@ -16,6 +16,10 @@
 6. sass + БЭМ
 7. docker
 
+### Code coverage
+
+![code coverage](./doc/code-coverage.png)
+
 ### Документация:
 
 1. https://fakerjs.dev/api/

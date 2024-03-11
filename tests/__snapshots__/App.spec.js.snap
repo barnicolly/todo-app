@@ -26,5 +26,6 @@ exports[`App.vue Snapshot has same HTML structure 1`] = `
       </div>
     </li>
   </ul><small>Выполнено задач: 1 из 2</small>
+  <div><small> Исходный код:&nbsp; <a target="_blank" href="https://github.com/barnicolly/vue-todo-app"> https://github.com/barnicolly/vue-todo-app </a></small></div>
 </div>
 `;
