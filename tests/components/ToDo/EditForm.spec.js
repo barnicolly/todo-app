@@ -1,4 +1,4 @@
-import { shallowMount } from '@vue/test-utils';
+import { shallowMount, mount } from '@vue/test-utils';
 import { faker } from '@faker-js/faker';
 import EditForm from '@/components/ToDo/EditForm.vue';
 
@@ -10,20 +10,20 @@ describe('EditForm.vue', () => {
   beforeEach(() => {
     id = faker.string.uuid();
     title = faker.lorem.sentence();
-    wrapper = shallowMount(EditForm, {
+    wrapper = mount(EditForm, {
       props: {
         title,
         id,
       },
+      attachTo: document.body,
     });
   });
 
   it('should correct initialize', () => {
-    const input = wrapper.find('input');
+    const input = wrapper.find('.todo-item__edit-input');
     expect(wrapper.vm.newTitle).toBe(title);
-
-    expect(input.attributes().id).toBe(id);
     expect(input.element.value).toContain(title);
+    expect(document.activeElement).toBe(input.element);
   });
 
   it('click cancel btn', () => {
@@ -32,7 +32,7 @@ describe('EditForm.vue', () => {
   });
 
   it('click save btn', async () => {
-    const input = wrapper.find('input');
+    const input = wrapper.find('.todo-item__edit-input');
 
     input.element.value = 'new value';
     await input.trigger('change');

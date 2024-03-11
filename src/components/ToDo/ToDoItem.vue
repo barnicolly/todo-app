@@ -1,9 +1,12 @@
 <template>
   <div>
     <input
-      class="todo-item__checkbox"
+      :class="[
+        'todo-item__checkbox',
+        { 'todo-item__checkbox--disabled': isEditing },
+      ]"
       type="checkbox"
-      :id="id"
+      :disabled="isEditing"
       :checked="isCompleted"
       @change="updateDoneStatus(id)" />
 

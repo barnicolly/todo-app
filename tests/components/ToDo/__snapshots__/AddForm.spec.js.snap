@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AddForm.vue Snapshot has same HTML structure 1`] = `
-<form><input type="text" autocomplete="off"><button class="btn btn--add" type="button">
+<form><input type="text" autocomplete="off" placeholder="Новая задача"><button class="btn btn--add" type="button">
     <font-awesome-icon-stub icon="plus" border="false" fixedwidth="false" flip="false" listitem="false" pulse="false" swapopacity="false" spin="false" symbol="false" inverse="false" bounce="false" shake="false" beat="false" fade="false" beatfade="false" flash="false" spinpulse="false" spinreverse="false"></font-awesome-icon-stub>
   </button></form>
 `;

@@ -4,7 +4,7 @@
       <div class="todo-item__edit-input-wrapper">
         <input
           class="todo-item__edit-input"
-          :id="id"
+          ref="labelInput"
           type="text"
           autocomplete="off"
           v-model.lazy.trim="newTitle" />
@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { type Ref } from 'vue';
+import { onMounted, ref, type Ref } from 'vue';
 import type { Todo } from '@/types/todo';
 
 type EditTodoProps = Omit<Todo, 'completed'>;
@@ -36,6 +36,14 @@ const emit = defineEmits<{
   'item-edited': [title: string];
   'edit-cancelled': [];
 }>();
+
+const labelInput = ref();
+
+onMounted(() => {
+  if (labelInput.value) {
+    labelInput.value.focus();
+  }
+});
 
 function onSubmit() {
   if (newTitle.value) {

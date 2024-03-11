@@ -1,6 +1,13 @@
 <template>
-  <div id="app" class="todo-list">
+  <div class="todo-list">
     <h1 class="todo-list__header">Список дел</h1>
+    <CAlert
+      color="danger"
+      :visible="alert !== ''"
+      dismissible
+      @close="closeAlert">
+      <div>{{ alert }}</div>
+    </CAlert>
     <AddForm class="todo-list__add-form"></AddForm>
     <ul>
       <li v-for="item in todoItems" :key="item.id">
@@ -29,9 +36,17 @@ import AddForm from '@/components/ToDo/AddForm.vue';
 import { storeToRefs } from 'pinia';
 import { useTodoStore } from '@/store/todo';
 import { onMounted, computed } from 'vue';
+import { CAlert } from '@coreui/vue';
+import { useAlertStore } from '@/store/alert';
 
 const store = useTodoStore();
+const alertStore = useAlertStore();
 const { todoItems } = storeToRefs(store);
+const { alert } = storeToRefs(alertStore);
+
+function closeAlert() {
+  alertStore.removeAlert();
+}
 
 onMounted(async (): Promise<void> => {
   await store.fetchTodoItems();

@@ -1,5 +1,6 @@
 import { createApp } from 'vue';
 import './assets/reset.scss';
+import '@coreui/coreui/dist/css/coreui.min.css';
 import './assets/btn.scss';
 import './assets/main.scss';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
