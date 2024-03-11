@@ -2,6 +2,7 @@ import { defineStore } from 'pinia';
 import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import type { Todo } from '@/types/todo';
+import { capitalize } from '@/helpers/string';
 
 interface TodoState {
   todoItems: Todo[];
@@ -20,6 +21,7 @@ export const useTodoStore = defineStore({
       this.todoItems = items.data.map((item: Todo) => ({
         ...item,
         id: item.id.toString(),
+        title: capitalize(item.title)
       }));
     },
     addToDo(toDoLabel: string) {
