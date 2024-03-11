@@ -12,6 +12,14 @@
       </li>
     </ul>
     <small>{{ listSummary }}</small>
+    <div>
+      <small>
+        Исходный код:&nbsp;
+        <a target="_blank" href="https://github.com/barnicolly/vue-todo-app">
+          https://github.com/barnicolly/vue-todo-app
+        </a>
+      </small>
+    </div>
   </div>
 </template>
 
