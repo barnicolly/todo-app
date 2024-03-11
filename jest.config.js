@@ -24,6 +24,16 @@ module.exports = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   snapshotSerializers: ['<rootDir>/node_modules/jest-serializer-vue'],
+  globals: {
+    'vue-jest': {
+      compilerOptions: {
+        isCustomElement: (tag) => tag.startsWith('font-awesome-'),
+      },
+    },
+  },
+  setupFilesAfterEnv: [
+    '<rootDir>/jest.setup.ts'
+  ],
 
   verbose: true,
 };

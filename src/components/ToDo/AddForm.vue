@@ -1,7 +1,9 @@
 <template>
   <form @submit.prevent="onSubmit">
     <input type="text" autocomplete="off" v-model.lazy.trim="title" />
-    <button class="btn btn--add" type="button" @click="onSubmit">+</button>
+    <button class="btn btn--add" type="button" @click="onSubmit">
+      <font-awesome-icon icon="plus" />
+    </button>
   </form>
 </template>
 
