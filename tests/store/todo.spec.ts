@@ -4,10 +4,13 @@ import { flushPromises } from '@vue/test-utils';
 
 import { setActivePinia, createPinia } from 'pinia';
 import { useTodoStore } from '@/store/todo';
+import { Todo } from '@/types/todo';
 
 describe('Todo state, actions', () => {
   beforeEach(() => {
-    const todoItems = [{ id: '1', title: 'title1', completed: false }];
+    const todoItems = [
+      { id: '1', title: 'title1', completed: false },
+    ] as Todo[];
     setActivePinia(createPinia());
     const store = useTodoStore();
     store.todoItems = todoItems;
@@ -54,7 +57,9 @@ describe('Todo state, actions', () => {
   it('fetchTodoItems', async () => {
     const store = useTodoStore();
     store.$reset();
-    const todoItems = [{ id: '1', title: 'title1', completed: false }];
+    const todoItems = [
+      { id: '1', title: 'title1', completed: false },
+    ] as Todo[];
     jest.spyOn(axios, 'get').mockResolvedValue({ data: todoItems });
     await store.fetchTodoItems();
     expect(axios.get).toHaveBeenCalledTimes(1);
@@ -70,7 +75,7 @@ describe('Todo state, getters', () => {
       { id: '1', title: 'title1', completed: false },
       { id: '2', title: 'title2', completed: true },
       { id: '3', title: 'title3', completed: true },
-    ];
+    ] as Todo[];
     setActivePinia(createPinia());
     const store = useTodoStore();
     store.todoItems = todoItems;

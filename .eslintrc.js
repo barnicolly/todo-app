@@ -34,7 +34,7 @@ module.exports = {
     ],
     'import/no-extraneous-dependencies': [
       'error',
-      { devDependencies: ['**/*.spec.js'] },
+      { devDependencies: ['**/*.spec.js', '**/*.spec.ts'] },
     ],
     'import/prefer-default-export': 'warn',
     'import/extensions': [
