@@ -11,7 +11,12 @@
     </CAlert>
     <AddForm class="todo-list__add-form"></AddForm>
 
-    <draggable v-model="todoItems" item-key="id">
+    <AppFilters />
+    <draggable
+      v-if="filteredTodos.length"
+      v-model="filteredTodos"
+      item-key="id"
+      class="todo-list__items">
       <template #item="{ element }">
         <ToDoItem
           :title="element.title"
@@ -20,26 +25,20 @@
           class="todo-list__item todo-item"></ToDoItem>
       </template>
     </draggable>
-    <small>{{ listSummary }}</small>
+    <div v-else class="todo-list__empty">Список пуст</div>
     <div>
-      <small>
-        Элементы можно переносить, редактирование по клику на текст элемента
-      </small>
+      <small class="todo-list__summary">{{ listSummary }}</small>
     </div>
-    <div>
-      <small>
-        Исходный код:&nbsp;
-        <a target="_blank" href="https://github.com/barnicolly/vue-todo-app">
-          https://github.com/barnicolly/vue-todo-app
-        </a>
-      </small>
-    </div>
+    <hr />
+    <AppFooter />
   </div>
 </template>
 
 <script setup lang="ts">
 import ToDoItem from '@/components/ToDo/ToDoItem.vue';
 import AddForm from '@/components/ToDo/AddForm.vue';
+import AppFooter from '@/components/AppFooter.vue';
+import AppFilters from '@/components/AppFilters.vue';
 import { storeToRefs } from 'pinia';
 import { useTodoStore } from '@/store/todo';
 import { onMounted, computed } from 'vue';
@@ -49,10 +48,10 @@ import draggable from 'vuedraggable';
 
 const store = useTodoStore();
 const alertStore = useAlertStore();
-const { todoItems } = storeToRefs(store);
+const { filteredTodos } = storeToRefs(store);
 const { alert } = storeToRefs(alertStore);
 
-function closeAlert() {
+function closeAlert(): void {
   alertStore.removeAlert();
 }
 

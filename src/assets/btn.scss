@@ -1,14 +1,30 @@
 .btn {
-  cursor: pointer;
+    cursor: pointer;
 
-  &.btn--delete {
-    color: #721c24;
-  }
+    &.btn--delete {
+        color: #721c24;
+    }
 
-  &.btn--save {
-    border-radius: 5px;
-    padding: 5px 10px;
-    background-color: blue;
-    color: #d1ecf1;
-  }
+    &.btn--save {
+        border-radius: 5px;
+        padding: 5px 10px;
+        background-color: #768a8f;
+        color: whitesmoke;
+
+        &:hover {
+            color: #d1ecf1;
+        }
+    }
+
+    &.btn--add {
+        transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+        border: 1px solid #ccc;
+        padding: 0 10px;
+    }
+
+    &.btn--add:hover {
+        background-color: #d1ecf1;
+        color: #768a8f;
+        border-radius: 5px;
+    }
 }

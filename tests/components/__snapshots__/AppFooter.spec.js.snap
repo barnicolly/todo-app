@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AppFooter.vue Snapshot has same HTML structure 1`] = `
+<div>
+  <div><small> Элементы можно переносить, редактирование по клику на текст элемента </small></div>
+  <div><small> Исходный код:&nbsp; <a target="_blank" href="https://github.com/barnicolly/vue-todo-app"> https://github.com/barnicolly/vue-todo-app </a></small></div>
+</div>
+`;

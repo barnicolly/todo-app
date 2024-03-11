@@ -3,7 +3,6 @@ import AddForm from '@/components/ToDo/AddForm.vue';
 import { createTestingPinia } from '@pinia/testing';
 import { useTodoStore } from '@/store/todo';
 
-// todo-misha переделать селекторы как будут классы;
 describe('AddForm.vue', () => {
   let wrapper;
   const defaultTitle = '';
