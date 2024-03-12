@@ -45,11 +45,16 @@ import { onMounted, computed } from 'vue';
 import { CAlert } from '@coreui/vue';
 import { useAlertStore } from '@/store/alert';
 import draggable from 'vuedraggable';
+import { Todo } from '@/types/todo';
 
 const store = useTodoStore();
 const alertStore = useAlertStore();
-const { filteredTodos } = storeToRefs(store);
 const { alert } = storeToRefs(alertStore);
+
+const filteredTodos = computed({
+  get: () => store.filteredTodos,
+  set: (todoItems: Todo[]) => store.updateTodoItems(todoItems),
+});
 
 function closeAlert(): void {
   alertStore.removeAlert();

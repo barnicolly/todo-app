@@ -21,11 +21,16 @@ export const useTodoStore = defineStore({
       const items = await axios.get(
         `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`,
       );
-      this.todoItems = items.data.map((item: Todo) => ({
-        ...item,
-        id: item.id.toString(),
-        title: capitalize(item.title),
-      }));
+      this.updateTodoItems(
+        items.data.map((item: Todo) => ({
+          ...item,
+          id: item.id.toString(),
+          title: capitalize(item.title),
+        })),
+      );
+    },
+    updateTodoItems(todoItems: Todo[]): void {
+      this.todoItems = todoItems;
     },
     addToDo(toDoLabel: string) {
       this.todoItems.push({

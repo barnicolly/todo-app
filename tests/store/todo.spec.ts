@@ -67,6 +67,18 @@ describe('Todo state, actions', () => {
     const currentToDoItems = store.todoItems;
     expect(currentToDoItems.length).toBe(todoItems.length);
   });
+
+  it('updateTodoItems', () => {
+    const store = useTodoStore();
+    store.$reset();
+    const todoItems = [
+      { id: '1', title: 'title1', completed: false },
+    ] as Todo[];
+    store.updateTodoItems(todoItems);
+    const currentToDoItems = store.todoItems;
+    expect(currentToDoItems.length).toBe(todoItems.length);
+    expect(currentToDoItems).toStrictEqual(todoItems);
+  });
 });
 
 describe('Todo state, getters', () => {
